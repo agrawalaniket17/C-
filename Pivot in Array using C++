@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+  
+  int arr[] = {1,4,6,8,8,5,5,10,13,9};  // Index 6 is the answer
+
+  // Following for loop is for displaying the array.
+  cout << "The array is : {";
+  for (int i=0; i < sizeof(arr) / sizeof(int); i++){
+    if (i+1 != sizeof(arr) / sizeof(int))
+      cout << arr[i] << " , ";
+    else
+      cout << arr[i] << "}\n";
+  }
+
+  // Following loop calculates the total sum of the array.
+  int sum = 0;
+  for (int i=0; i < sizeof(arr) / sizeof(int) ; i++){
+    sum = sum + arr[i];
+  }
+
+  // Following code finds the pivot index, if it exists.
+  
+  int total = 0;
+  bool flag = true;
+  for (int i=0; i < sizeof(arr) / sizeof(int); i++){
+    sum = sum - arr[i];
+    if (total == sum){
+      flag = false;
+      cout << "Index " << i << " is pivot" << endl;
+    }
+    total = total + arr[i];
+  }
+
+  // The following is displayed if no pivot index is found.
+  if (flag){
+    cout << "There is no pivot index" << endl;
+  }
+  return 0;
+}
